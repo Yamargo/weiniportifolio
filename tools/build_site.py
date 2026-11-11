@@ -57,9 +57,9 @@ def alt(key, pt, en=None, zh=None):
 
 # ------------------------------------------------------------------ shared UI strings
 S('meta.description',
-  'Portfólio de Vinícius Flórido Marques Costa: atendimento ao cliente, suporte de TI, liderança de Service Desk, design gráfico e SEO, com experiência em Laos, Albânia, Camboja, Armênia e Filipinas.',
-  'Portfolio of Vinícius Flórido Marques Costa: customer service, IT support, Service Desk leadership, graphic design and SEO, with experience in Laos, Albania, Cambodia, Armenia and the Philippines.',
-  'Vinícius Flórido Marques Costa 的作品集：客户服务、IT 支持、服务台团队管理、平面设计和 SEO，工作经历遍及老挝、阿尔巴尼亚、柬埔寨、亚美尼亚和菲律宾。')
+  'Portfólio de Vinícius: atendimento ao cliente, suporte de TI, liderança de Service Desk, design gráfico e SEO, com experiência em Laos, Albânia, Camboja, Armênia e Filipinas.',
+  'Portfolio of Vinícius: customer service, IT support, Service Desk leadership, graphic design and SEO, with experience in Laos, Albania, Cambodia, Armenia and the Philippines.',
+  'Vinícius 的作品集：客户服务、IT 支持、服务台团队管理、平面设计和 SEO，工作经历遍及老挝、阿尔巴尼亚、柬埔寨、亚美尼亚和菲律宾。')
 S('ui.skip', 'Ir para o conteúdo principal', 'Skip to main content', '跳到主要内容')
 S('ui.nav', 'Navegação principal', 'Main navigation', '主导航')
 S('ui.lang', 'Idioma', 'Language', '语言')
@@ -78,7 +78,7 @@ for k, (pt, en, zh) in {'home': ('Início', 'Home', '首页'),
                         'armenia': ('Armênia', 'Armenia', '亚美尼亚'),
                         'philippines': ('Filipinas', 'Philippines', '菲律宾')}.items():
     S(f'country.{k}', pt, en, zh)
-SITE_NAME = 'Vinícius Flórido'
+SITE_NAME = 'Vinícius'
 FLAG = {'laos': 'la', 'albania': 'al', 'cambodia': 'kh', 'armenia': 'am', 'philippines': 'ph'}
 NAVIMG = {'home': 'home', 'laos': 'la', 'albania': 'al', 'cambodia': 'kh', 'armenia': 'am', 'philippines': 'ph'}
 
@@ -186,12 +186,12 @@ def section(sid, h2key, h2pt, subpt=None, subkey=None, body='', h2vals=None):
 
 # ------------------------------------------------------------------ pages
 def home():
-    intro_pt = ('Sou o <b>Vinícius Flórido Marques Costa</b>, brasileiro, com experiência internacional em <b>atendimento ao cliente</b>, '
+    intro_pt = ('Sou o <b>Vinícius</b>, brasileiro, com experiência internacional em <b>atendimento ao cliente</b>, '
                 '<b>suporte de TI</b> e <b>liderança de equipes de Service Desk</b>. Já trabalhei nas Filipinas, em Portugal, na Albânia, em Laos '
                 'e no Camboja, e em home office para a Armênia e o Paquistão. Também tenho experiência com <b>design gráfico</b> e <b>tráfego pago</b>.<br>\n'
                 'Idiomas: português, inglês e espanhol (fluentes), e chinês com apoio de ferramentas de IA. Escolha um país abaixo para ver o que fiz em cada lugar.')
     S('home.intro.title', '👋 Apresentação'.replace('👋 ', ''), D.APRES[0].replace('👋 ', ''), D.APRES[1].replace('👋 ', ''))
-    S('home.intro.body', intro_pt, D.INTRO[0], D.INTRO[1])
+    S('home.intro.body', intro_pt, D.INTRO[0].replace('Vinícius Flórido Marques Costa', 'Vinícius'), D.INTRO[1].replace('Vinícius Flórido Marques Costa（维尼）', 'Vinícius（维尼）').replace('Vinícius Flórido Marques Costa', 'Vinícius'))
     tags = ['Atendimento ao cliente', 'Suporte de TI', 'Liderança de Service Desk', 'Design gráfico', 'Tráfego pago (Meta Ads)', 'Automação de marketing']
     tag_html = ''
     for i, t in enumerate(tags):
@@ -208,7 +208,7 @@ def home():
     w, h = A['hero']
     S('home.hero.alt', 'Banner do portfólio com ilustração de um tigre da fortuna',
       'Portfolio banner with a fortune tiger illustration', '带有财富之虎插画的作品集横幅')
-    return f'''<div class="herobanner"><h1 class="sr-only" tabindex="-1" data-i18n="home.h1">{esc(S("home.h1", "Vinícius Flórido Marques Costa — Portfólio", "Vinícius Flórido Marques Costa — Portfolio", "Vinícius Flórido Marques Costa — 作品集"))}</h1>
+    return f'''<div class="herobanner"><h1 class="sr-only" tabindex="-1" data-i18n="home.h1">{esc(S("home.h1", "Vinícius — Portfólio", "Vinícius — Portfolio", "Vinícius — 作品集"))}</h1>
 <img class="hb-one" src="assets/img/ui/hero.webp" width="{w}" height="{h}" {alt("home.hero.alt", *STR["home.hero.alt"].values())} fetchpriority="high" decoding="async"></div>
 <section class="section" aria-labelledby="intro-h"><div class="explain reveal"><h2 id="intro-h" class="explain-title" data-i18n="home.intro.title">{esc(STR["home.intro.title"]["pt"])}</h2>
 <p data-i18n-html="home.intro.body">{intro_pt}</p>
@@ -406,7 +406,7 @@ def main():
         f'<li><a class="tab" href="#{k}" data-route-link="{k}">{flag(FLAG[k], 28) if k in FLAG else ""}{navimg(k)}</a></li>' for k in PAGES)
     langs = ''.join(f'<button type="button" data-lang="{c}" lang="{c}" aria-pressed="false">{n}</button>' for c, n in (('pt', 'PT'), ('en', 'EN'), ('zh', '中文')))
     person = {
-        '@context': 'https://schema.org', '@type': 'Person', 'name': 'Vinícius Flórido Marques Costa',
+        '@context': 'https://schema.org', '@type': 'Person', 'name': 'Vinícius',
         'jobTitle': 'Customer Service Analyst · Service Desk Coordinator',
         'nationality': {'@type': 'Country', 'name': 'Brazil'},
         'knowsLanguage': ['pt', 'en', 'es', 'zh'],
@@ -422,7 +422,7 @@ def main():
 <meta name="theme-color" content="#4a0508">
 <meta name="color-scheme" content="dark">
 <meta property="og:type" content="profile">
-<meta property="og:title" content="Vinícius Flórido Marques Costa">
+<meta property="og:title" content="Vinícius">
 <meta property="og:description" content="{esc(STR["meta.description"]["pt"])}">
 <meta property="og:image" content="assets/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">

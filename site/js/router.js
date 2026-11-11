@@ -5,7 +5,7 @@
  */
 const ROUTES = ['home', 'laos', 'albania', 'cambodia', 'armenia', 'philippines'];
 const ALIASES = { projetos: 'laos', screenshots: 'laos' };
-const SITE = 'Vinícius Flórido';
+const SITE = 'Vinícius';
 const reduceMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 export function createRouter({ onChange, announce, getTitle }) {
