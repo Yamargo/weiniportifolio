@@ -1,0 +1,60 @@
+@media all {
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 6rem;
+    scroll-behavior: smooth;
+    background: var(--c-bg);
+  }
+
+  html body {
+    margin: 0;
+    min-height: 100dvh;
+    color: var(--c-text);
+    font: 400 var(--fs-1)/1.6 var(--font-sans);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    background:
+      radial-gradient(800px 500px at 50% -10%, rgb(255 59 48 / 0.4), transparent),
+      radial-gradient(700px 500px at 0 100%, rgb(255 140 26 / 0.2), transparent),
+      radial-gradient(600px 400px at 100% 60%, rgb(255 204 51 / 0.15), transparent),
+      var(--c-bg);
+    background-attachment: fixed;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  }
+
+  /* subtle coin-dot pattern */
+  body::after {
+    content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background: radial-gradient(circle at 30px 30px, rgb(255 204 51 / 0.09) 10px, transparent 11px) 0 0 / 70px 70px;
+  }
+
+  img, svg, video { display: block; max-width: 100%; }
+  img { height: auto; }
+  h1, h2, h3, p, figure, dl, dd, ul { margin: 0; }
+  ul[role="list"] { list-style: none; padding: 0; }
+  a { color: inherit; }
+  button { font: inherit; color: inherit; }
+  [hidden] { display: none !important; }
+
+  :focus-visible { outline: 3px solid var(--c-focus); outline-offset: 3px; border-radius: 4px; }
+  :focus:not(:focus-visible) { outline: none; }
+  main:focus, h1:focus { outline: none; }
+
+  ::selection { background: var(--c-gold); color: var(--c-ink); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  }
+}
+
+@media all {
+  .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+  .skip-link {
+    position: fixed; top: 0.5rem; left: 0.5rem; z-index: 100; padding: 0.6rem 1rem; border-radius: var(--r-sm);
+    background: var(--c-gold); color: var(--c-ink); font-weight: 600; text-decoration: none; transform: translateY(-200%);
+  }
+  .skip-link:focus { transform: none; }
+}

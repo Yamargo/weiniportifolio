@@ -1,0 +1,55 @@
+/* Design tokens — single source of truth for colour, type, space, motion. */
+
+@media all {
+  :root {
+    color-scheme: dark;
+
+    /* colour */
+    --c-bg: #2a0508;
+    --c-surface: #4a0b10;
+    --c-surface-hi: #5a0e14;
+    --c-surface-lo: #3d080c;
+    --c-text: #fff4dc;
+    --c-muted: #e8b98a;
+    --c-gold: #ffcc33;
+    --c-gold-hi: #fff2a8;
+    --c-gold-lo: #d4a02a;
+    --c-orange: #ff8c1a;
+    --c-red: #c1121f;
+    --c-red-deep: #7a0a10;
+    --c-ink: #3a0508;
+    --c-focus: #fff2a8;
+
+    /* type (fluid) */
+    --font-sans: "Inter", "Noto Sans SC", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --fs-0: clamp(0.875rem, 0.84rem + 0.15vw, 0.95rem);
+    --fs-1: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+    --fs-2: clamp(1.125rem, 1.05rem + 0.35vw, 1.3rem);
+    --fs-3: clamp(1.35rem, 1.2rem + 0.7vw, 1.65rem);
+    --fs-4: clamp(2rem, 1.4rem + 3vw, 3.25rem);
+
+    /* space (4px scale) */
+    --s-1: 0.25rem;
+    --s-2: 0.5rem;
+    --s-3: 0.75rem;
+    --s-4: 1rem;
+    --s-5: 1.5rem;
+    --s-6: 2rem;
+
+    /* shape & depth */
+    --r-sm: 0.5rem;
+    --r-md: 1rem;
+    --r-pill: 999px;
+    --shadow-card: inset 0 0 0 2px var(--c-red-deep), 0 8px 20px rgb(0 0 0 / 0.6);
+    --shadow-glow: inset 0 0 0 2px var(--c-red-deep), 0 0 24px color-mix(in srgb, var(--c-gold) 53%, transparent);
+
+    /* layout */
+    --w-page: 62.5rem;
+    --gutter: clamp(1rem, 4vw, 1.25rem);
+
+    /* motion */
+    --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+    --t-fast: 120ms;
+    --t-med: 240ms;
+  }
+}
