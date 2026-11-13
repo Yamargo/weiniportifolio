@@ -13,6 +13,8 @@ function safeGet() { try { return localStorage.getItem(STORAGE_KEY); } catch { r
 function safeSet(v) { try { localStorage.setItem(STORAGE_KEY, v); } catch { /* storage unavailable */ } }
 
 function detect() {
+  const root = document.documentElement;
+  if (root.hasAttribute('data-fixed') && SUPPORTED.includes(root.dataset.lang)) return root.dataset.lang; // language chosen by the URL (/en/, /zh/, /pt/)
   const q = new URLSearchParams(location.search).get('lang');
   if (SUPPORTED.includes(q)) return q;
   const stored = safeGet();
